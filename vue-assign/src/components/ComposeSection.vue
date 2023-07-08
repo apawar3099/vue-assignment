@@ -7,12 +7,14 @@
       name=""
       rows="1"
       id="myTextarea"
+      placeholder="Enter message"
     ></textarea>
 
-    <button @click="onSend()" class="">
-      <div class="h-12 w-12 min-w-[48px]">
-        <img src="../assets/sendIcon.png" />
-      </div>
+    <button
+      @click="onSend()"
+      class="w-[60px] bg-blue-200 rounded-lg flex justify-center"
+    >
+      <img class="h-12 w-12 min-w-[48px]" src="../assets/sendIcon.png" />
     </button>
   </div>
 </template>
@@ -25,18 +27,20 @@ export default {
       messageVal: "",
     };
   },
+  // mounted() {
+  //   console.log("jjjj", this.currentUser);
+  // },
   methods: {
     onSend() {
+      console.log("jjjj", this.currentUser);
+
       // let text = document.getElementById("myTextarea").value;
       // let lines = text.split(/\r|\r\n|\n/);
       // let count = lines.length;
       // console.log(count);
-
-      var text = document.getElementById("myTextarea").value;
-      var lines = text.split(/\r|\r\n|\n/);
-      var count = lines.length;
-      console.log(count); // Outputs 4
-
+      if (!this.messageVal) {
+        return;
+      }
       const newMessage = {
         id: Math.floor(Math.random() * 1000),
         from: this.currentUser,

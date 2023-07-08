@@ -26,6 +26,7 @@ export default {
     };
   },
   mounted() {
+    console.log("ssss", this.currentUser.id, this.message);
     this.isSent = this.currentUser.id === this.message.from.id;
   },
 };

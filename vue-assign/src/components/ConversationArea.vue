@@ -1,5 +1,5 @@
 <template>
-  <div  class="flex flex-col gap-3 overflow-y-auto">
+  <div class="flex flex-col gap-3 overflow-y-auto">
     <div v-for="message in state.conversation" :key="message">
       <MessageEntry
         :message="message"
@@ -16,6 +16,8 @@ export default {
   props: {
     state: Object,
   },
-  mounted() {},
+  mounted() {
+    console.log();
+  },
 };
 </script>
