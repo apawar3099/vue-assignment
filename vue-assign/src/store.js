@@ -18,16 +18,26 @@ const store = createStore({
 
       this.state.chat.currentUser = JSON.parse(currentUser);
     },
-    sendData(_, val) {
-      this.state.chat.conversation = [...this.state.chat.conversation, val];
+    async sendData(_, val) {
+   
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(
+            (this.state.chat.conversation = [
+              ...this.state.chat.conversation,
+              val,
+            ])
+          );
+        }, 500);
+      });
     },
   },
   actions: {
     fetchDataApi(context) {
       context.commit("fetchData");
     },
-    sendDataApi(context, val) {
-      context.commit("sendData", val);
+    async sendDataApi(context, val) {
+      await context.commit("sendData", val);
     },
   },
 });

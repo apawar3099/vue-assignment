@@ -23,14 +23,11 @@ export default {
   },
 
   mounted() {
-    console.log("sdsd", this.$store.state.chat.conversation);
     this.$store.dispatch("fetchDataApi");
-
-    console.log("sdsd", this.$store.state.chat.conversation);
   },
   methods: {
-    sendMessage(message) {
-      this.$store.dispatch("sendDataApi", message);
+    async sendMessage(message) {
+      await this.$store.dispatch("sendDataApi", message);
     },
   },
 };
