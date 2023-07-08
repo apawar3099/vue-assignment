@@ -1,9 +1,14 @@
 <template>
-  <div class="flex flex-col gap-3 overflow-y-auto">
-    <div v-for="message in state.conversation" :key="message">
+  <div class="flex flex-col gap-3 overflow-y-auto" ref="targetRef">
+    <div
+      v-for="(message, index) in state.conversation"
+      :key="message"
+      :ref="`message-${index}`"
+    >
       <MessageEntry
         :message="message"
         :currentUser="state.currentUser"
+        @scroll-last="scrollToLastMessage"
       ></MessageEntry>
     </div>
   </div>
@@ -16,8 +21,13 @@ export default {
   props: {
     state: Object,
   },
-  mounted() {
-    console.log();
+  methods: {
+    scrollToLastMessage() {
+      const lastChildElement = this.$refs.targetRef.lastElementChild;
+      lastChildElement?.scrollIntoView({
+        behavior: "smooth",
+      });
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-3">
+  <div class="flex gap-3" ref="textAreaRef">
     <textarea
       type="textarea"
       v-model="messageVal"
@@ -50,6 +50,8 @@ export default {
 
       this.$emit("send-message", newMessage);
       this.messageVal = "";
+
+      this.$refs.textAreaRef.scrollIntoView({ behavior: "smooth" });
     },
   },
 };
